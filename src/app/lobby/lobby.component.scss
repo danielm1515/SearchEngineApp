@@ -1,0 +1,25 @@
+.lobby-component {
+  padding:16px;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+
+  .title{
+    text-align: center;
+  }
+
+  .subtitle{
+    text-align: center;
+  }
+
+  .search-engine {
+    &.container {
+      width: 150px;
+      height: 150px;
+
+    }
+  }
+}

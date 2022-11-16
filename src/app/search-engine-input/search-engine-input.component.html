@@ -1,0 +1,18 @@
+<div class="search-engine-component">
+  <input
+    matInput
+    class="search-engine-component__input"
+    type="text"
+    placeholder="What are you looking for ?"
+    [(ngModel)]="searchValue"
+  /> <button class="search-engine-component__button" (click)="onSearchPress()">Search</button>
+  <div *ngIf="searchResults != null" class="search-engine-component__result">
+    <mat-selection-list #favorites  (selectionChange)="onSelectionChange($event)">
+      <mat-list-option *ngFor="let item of searchResults; let i = index">
+        {{ item.name }} 
+      </mat-list-option>
+    </mat-selection-list>
+
+    {{favorites.selectedOptions.selected.length}}
+  </div>
+</div>

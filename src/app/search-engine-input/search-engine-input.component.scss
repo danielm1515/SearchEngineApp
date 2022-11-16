@@ -1,0 +1,26 @@
+.search-engine-component {
+  &__input {
+    color: gray;
+    border: 1px solid black;
+    height: 50px;
+    width: 600px;
+    font-size: 16px;
+    text-align: center;
+  
+  }
+  &__input:focus {
+    color: black;
+  }
+
+  &__button{
+    height: 50px;
+    font-size: 16px;
+  }
+  &__result {
+    min-height: 50px;
+    
+    padding: 16px;
+    overflow-y: auto;
+    height: 500px;
+  }
+}
