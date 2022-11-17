@@ -49,9 +49,9 @@
               align-items: center;
             "
           >
-            <div *ngIf="item.marked">
+            <div *ngIf="item.isFavorite">
               <button
-                (click)="onSelection(item)"
+                (click)="onRemoveFavorite(item)"
                 class="search-engine-component__button"
               >
                 <mat-icon
@@ -61,9 +61,9 @@
                 ></mat-icon>
               </button>
             </div>
-            <div *ngIf="!item.marked">
+            <div *ngIf="!item.isFavorite">
               <button
-                (click)="onSelection(item)"
+                (click)="onAddFavorite(item)"
                 class="search-engine-component__button"
               >
                 <mat-icon

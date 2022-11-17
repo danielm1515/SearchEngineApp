@@ -12,12 +12,13 @@ export class SearchService {
 
   search(value: string): any {
     var pointer = this;
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
 
     return this.httpClient
-      .get(pointer.CONSTANTS.SERVER_URL + 'Search/Search/'+value, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }),
+      .get(pointer.CONSTANTS.SERVER_URL + 'Search/Search/' + value, {
+        headers: headers,
       })
       .toPromise();
   }

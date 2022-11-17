@@ -55,4 +55,18 @@ export class FavoriteService {
       )
       .toPromise();
   }
+
+  removeFavoriteByGitHubId(gitHubId: number): any {
+    var pointer = this;
+    return this.httpClient
+      .delete(
+        pointer.CONSTANTS.SERVER_URL + `Favorite/RemoveFavoriteByGitHubId/${gitHubId}`,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      .toPromise();
+  }
 }

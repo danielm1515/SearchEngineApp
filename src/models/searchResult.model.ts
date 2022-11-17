@@ -5,5 +5,5 @@ export interface SearchResult {
   name: string;
   url: string;
   ownerName:string;
-  marked:boolean
+  isFavorite:boolean
 }

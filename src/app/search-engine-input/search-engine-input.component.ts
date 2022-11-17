@@ -47,22 +47,21 @@ export class SearchEngineInputComponent implements OnInit {
     return isValid;
   }
 
-  async onSelection(item: SearchResult) {
-    //add to favorites
-    let result = await this.onAddFavorite(item);
-    console.log(result);
-  }
-
+  
   async onAddFavorite(searchResult: SearchResult) {
     let result = await this.favoriteService.addFavorite(searchResult);
     if (result) {
-      searchResult.marked = true;
+      searchResult.isFavorite = true;
       this._snackBar.open('favorite has been added successfully', 'dismiss');
     }
   }
 
-  async onRemoveFavorite(favorite: Favorite) {
-    let result = await this.favoriteService.removeFavorite(favorite.favoriteId);
+  async onRemoveFavorite(searchResult: SearchResult) {
+    let result = await this.favoriteService.removeFavoriteByGitHubId(searchResult.gitHubId);
+    if (result) {
+      searchResult.isFavorite = false;
+      this._snackBar.open('favorite has been removed successfully', 'dismiss');
+    }
   }
 
   openSnackBar(message: string, action: string) {
