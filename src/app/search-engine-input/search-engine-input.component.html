@@ -1,18 +1,81 @@
 <div class="search-engine-component">
-  <input
-    matInput
-    class="search-engine-component__input"
-    type="text"
-    placeholder="What are you looking for ?"
-    [(ngModel)]="searchValue"
-  /> <button class="search-engine-component__button" (click)="onSearchPress()">Search</button>
-  <div *ngIf="searchResults != null" class="search-engine-component__result">
-    <mat-selection-list #favorites  (selectionChange)="onSelectionChange($event)">
-      <mat-list-option *ngFor="let item of searchResults; let i = index">
-        {{ item.name }} 
-      </mat-list-option>
-    </mat-selection-list>
+  <div class="search-engine-component__container">
+    <input
+      matInput
+      class="search-engine-component__input"
+      type="text"
+      placeholder="What are you looking for ?"
+      [(ngModel)]="searchValue"
+    />
+    <button
+      [disabled]="loading"
+      class="search-engine-component__button"
+      (click)="onSearchPress()"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="search"
+      ></mat-icon>
+    </button>
+  </div>
 
-    {{favorites.selectedOptions.selected.length}}
+  <div *ngIf="loading" class="search-engine-component__loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div
+    *ngIf="!loading && searchResults != null"
+    class="search-engine-component__result"
+  >
+    <mat-list role="list">
+      <mat-list-item
+        role="listitem"
+        *ngFor="let item of searchResults; let i = index"
+      >
+        <div class="itemContainer">
+          <div style="width: 50%">
+            <div class="name">
+              <span> <b>Repository :</b> {{ item.name }}</span>
+            </div>
+            <div class="ownerName">
+              <span><b>Owner :</b> {{ item.ownerName }}</span>
+            </div>
+          </div>
+          <div
+            style="
+              width: 50%;
+              display: flex;
+              justify-content: end;
+              align-items: center;
+            "
+          >
+            <div *ngIf="item.marked">
+              <button
+                (click)="onSelection(item)"
+                class="search-engine-component__button"
+              >
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  fontIcon="delete"
+                ></mat-icon>
+              </button>
+            </div>
+            <div *ngIf="!item.marked">
+              <button
+                (click)="onSelection(item)"
+                class="search-engine-component__button"
+              >
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  fontIcon="star"
+                ></mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
   </div>
 </div>

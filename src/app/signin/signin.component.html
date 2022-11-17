@@ -1,1 +1,24 @@
-<p>signin works!</p>
+<div class="signin-component">
+    <div class="container">
+        <h1>SignIn</h1>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="YourEmail@Domain" [formControl]="email" required id="email">
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Your password" type="password" [formControl]="password" id="password"
+                    required>
+                <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <button id="signin" mat-raised-button (click)="login();">Submit</button>
+        </div>
+
+    </div>
+</div>

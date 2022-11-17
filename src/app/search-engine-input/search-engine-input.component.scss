@@ -1,26 +1,46 @@
 .search-engine-component {
+  width: 1000px;
+  &__loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  .itemContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+  }
+
   &__input {
     color: gray;
     border: 1px solid black;
     height: 50px;
-    width: 600px;
+    width: 100%;
     font-size: 16px;
     text-align: center;
-  
   }
   &__input:focus {
     color: black;
   }
 
-  &__button{
+  &__button {
     height: 50px;
+    width: 50px;
     font-size: 16px;
   }
   &__result {
     min-height: 50px;
-    
     padding: 16px;
     overflow-y: auto;
-    height: 500px;
+    max-height: 400px;
+    height: auto;
   }
 }

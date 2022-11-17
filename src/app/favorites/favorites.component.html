@@ -1,0 +1,66 @@
+<div class="container">
+
+    <div *ngIf="selection.selected.length>0">
+        <button id="signin" mat-raised-button (click)="remove();">Remove</button>
+    </div>
+
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="selectHandler(row)"
+                    [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="favoriteId">
+            <mat-header-cell *matHeaderCellDef> FavoriteId </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.favoriteId}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="userId">
+            <mat-header-cell *matHeaderCellDef> UserId </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="gitHubId">
+            <mat-header-cell *matHeaderCellDef> GitHubId </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.gitHubId}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="createdAt">
+            <mat-header-cell *matHeaderCellDef> CreatedAt </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.createdAt}} </mat-cell>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="url">
+            <mat-header-cell *matHeaderCellDef> Url </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.url}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>

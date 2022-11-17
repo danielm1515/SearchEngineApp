@@ -4,4 +4,6 @@ export interface SearchResult {
   gitHubId: number;
   name: string;
   url: string;
+  ownerName:string;
+  marked:boolean
 }

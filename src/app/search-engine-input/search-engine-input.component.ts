@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Favorite } from 'src/models/favorite.model';
+import { FavoriteService } from 'src/services/favorite.service';
 import { SearchResult } from '../../models/searchResult.model';
 import { SearchService } from '../../services/search.service';
 
@@ -11,13 +14,23 @@ import { SearchService } from '../../services/search.service';
 export class SearchEngineInputComponent implements OnInit {
   searchResults: SearchResult[] = [];
   searchValue: string = '';
-  
-  constructor(private SearchService: SearchService) {}
+  selected: any = {};
+  loading: boolean = false;
+
+  constructor(
+    private SearchService: SearchService,
+    private favoriteService: FavoriteService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
 
   async onSearchPress() {
-    if (!this.searchValidation()) return;
+    if (!this.searchValidation()) {
+      this.loading = false;
+      return;
+    }
+    this.loading = true;
     let result: SearchResult[] = await this.SearchService.search(
       this.searchValue
     );
@@ -25,6 +38,7 @@ export class SearchEngineInputComponent implements OnInit {
     if (result != null) {
       this.searchResults = result;
     }
+    this.loading = false;
   }
 
   searchValidation() {
@@ -33,7 +47,25 @@ export class SearchEngineInputComponent implements OnInit {
     return isValid;
   }
 
-  async onSelectionChange(change: MatSelectionListChange) {
-    console.log(change);
+  async onSelection(item: SearchResult) {
+    //add to favorites
+    let result = await this.onAddFavorite(item);
+    console.log(result);
+  }
+
+  async onAddFavorite(searchResult: SearchResult) {
+    let result = await this.favoriteService.addFavorite(searchResult);
+    if (result) {
+      searchResult.marked = true;
+      this._snackBar.open('favorite has been added successfully', 'dismiss');
+    }
+  }
+
+  async onRemoveFavorite(favorite: Favorite) {
+    let result = await this.favoriteService.removeFavorite(favorite.favoriteId);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

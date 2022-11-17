@@ -1,5 +1,5 @@
 .lobby-component {
-  padding:16px;
+  padding: 16px;
   font-size: 16px;
   display: flex;
   flex-wrap: nowrap;
@@ -7,11 +7,11 @@
   align-content: center;
   flex-direction: column;
 
-  .title{
+  .title {
     text-align: center;
   }
 
-  .subtitle{
+  .subtitle {
     text-align: center;
   }
 
@@ -19,7 +19,15 @@
     &.container {
       width: 150px;
       height: 150px;
-
     }
+  }
+  .logo {
+    margin: 0 auto;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/githubIcon.png');
+    margin-bottom: 16px;
   }
 }
