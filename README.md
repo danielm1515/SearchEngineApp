@@ -1,5 +1,5 @@
 # GitHub Repository Search Engine Angular 14.2.9 App
-![alt text](https://github.com/[username]/[reponame]/blob/main/src/assets/githubIcon.png?raw=true)
+![alt text](https://github.com/danielm1515/SearchEngineApp/blob/main/src/assets/githubIcon.png)
 
 
 # SearchEngineApp
