@@ -17,7 +17,18 @@
     flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
+
+  
   }
+  .itemButtonContainer
+  {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+
 
   &__input {
     color: gray;
@@ -43,4 +54,6 @@
     max-height: 400px;
     height: auto;
   }
+
+
 }

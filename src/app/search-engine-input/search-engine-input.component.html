@@ -41,14 +41,7 @@
               <span><b>Owner :</b> {{ item.ownerName }}</span>
             </div>
           </div>
-          <div
-            style="
-              width: 50%;
-              display: flex;
-              justify-content: end;
-              align-items: center;
-            "
-          >
+          <div class="itemButtonContainer">
             <div *ngIf="item.isFavorite">
               <button
                 (click)="onRemoveFavorite(item)"
@@ -56,7 +49,6 @@
               >
                 <mat-icon
                   aria-hidden="false"
-                  aria-label="Example home icon"
                   fontIcon="delete"
                 ></mat-icon>
               </button>
@@ -68,7 +60,6 @@
               >
                 <mat-icon
                   aria-hidden="false"
-                  aria-label="Example home icon"
                   fontIcon="star"
                 ></mat-icon>
               </button>
