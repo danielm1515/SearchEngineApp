@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit {
 
     let result = await this.favoriteService.removeFavorite(selected.favoriteId);
     if (result) {
-      this._snackBar.open('favorite has been removed successfully', 'dismiss');
+      this._snackBar.open('Favorite has been removed successfully', 'dismiss');
       this.favorites = this.favorites.filter(
         (w) => w.favoriteId != selected.favoriteId
       );
