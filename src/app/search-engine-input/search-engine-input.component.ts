@@ -52,7 +52,7 @@ export class SearchEngineInputComponent implements OnInit {
     let result = await this.favoriteService.addFavorite(searchResult);
     if (result) {
       searchResult.isFavorite = true;
-      this._snackBar.open('favorite has been added successfully', 'dismiss');
+      this._snackBar.open('Favorite has been added successfully', 'dismiss');
     }
   }
 
@@ -60,11 +60,8 @@ export class SearchEngineInputComponent implements OnInit {
     let result = await this.favoriteService.removeFavoriteByGitHubId(searchResult.gitHubId);
     if (result) {
       searchResult.isFavorite = false;
-      this._snackBar.open('favorite has been removed successfully', 'dismiss');
+      this._snackBar.open('Favorite has been removed successfully', 'dismiss');
     }
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
 }
