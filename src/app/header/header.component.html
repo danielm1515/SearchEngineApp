@@ -4,6 +4,7 @@
   >
   <span class="example-spacer"></span>
   <button
+    *ngIf="currentUser && currentUser.token != null"
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
@@ -12,6 +13,7 @@
   </button>
 
   <button
+    *ngIf="currentUser && currentUser.token != null"
     mat-icon-button
     class="example-icon"
     [matMenuTriggerFor]="menu"
